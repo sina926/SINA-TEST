@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Demo</title>
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="/src/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css ">
+    <link rel="stylesheet" href="/src/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.css ">
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+      <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.11/dist/lenis.css">
+      <style>
+  #spinner {
+    --uib-size: 40px;
+    --uib-color: black;
+    --uib-speed: 2s;
+    --uib-bg-opacity: 0;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    transform-origin: center;
+    animation: rotate var(--uib-speed) linear infinite;
+    will-change: transform;
+    overflow: visible;
+  }
+
+  .car {
+    fill: none;
+    stroke: var(--uib-color);
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+    will-change: stroke-dasharray, stroke-dashoffset;
+    transition: stroke 0.5s ease;
+  }
+
+
+  .track {
+    fill: none;
+    stroke: var(--uib-color);
+    opacity: var(--uib-bg-opacity);
+    transition: stroke 0.5s ease;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes stretch {
+    0% {
+      stroke-dasharray: 0, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 75, 150;
+      stroke-dashoffset: -25;
+    }
+    100% {
+      stroke-dashoffset: -100;
+    }
+  }
+  
+#progress{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 2px;
+    background-color: rgb(6, 1, 14) 0px 7px 29px 0px;
+    width: 100%;
+    animation:scroll-animation 1s linear ;
+}
+#article{
+  color: rgb(0, 0, 0);
+}
+
+@keyframes scroll-animation {
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+ 
+#btn1 {
+ padding: 15px 25px;
+ border: unset;
+ border-radius: 15px;
+ color: #212121;
+ z-index: 1;
+ background: #e8e8e8;
+ position: absolute;
+ font-weight: 1000;
+ font-size: 17px;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms;
+ overflow: hidden;
+ right: 150px; 
+  
+ 
+}
+
+#btn1::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 100%;
+ width: 0;
+ border-radius: 15px;
+ background-color: #212121;
+ z-index: -1;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms
+}
+
+#btn1:hover {
+ color: #e8e8e8;
+}
+
+#btn1:hover::before {
+ width: 100%;
+}
+
+.words{
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  overflow: hidden;
+}
+.word{
+  display: block;
+  font-weight: bold;
+  color: #212121;
+  line-height: 40px;
+  animation: spin 10s infinite;
+}
+@keyframes spin {
+  0% {transform: translateY(0);}
+  20% {transform: translateY(-100%);}
+  40% {transform: translateY(-200%);}
+  60% {transform: translateY(-300%);}
+  80% {transform: translateY(-400%);}
+  100% {transform: translateY(0);}
+}
+/* #img-article {
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.25)
+    ),
+    url("/public/poster-on-the-wall--white-mockup--beautiful-shadow.png");
+
+  background-size: auto;
+   background-repeat: no-repeat;
+  background-position: center;
+   border-radius: 10px;
+   
+     
+} */
+</style>
+</head>
+ <!-- bg-[url('/public/background-sneaker-shop-.png')]  -->
+  <div id="progress"></div>
+<header dir="rtl" class=" bg-cover bg-black ">
+    <section class="container px-5 flex justify-start py-3 items-center bg-cover  lg:justify-between" >
+        <div class="flex items-center space-x-4 space-x-reverse lg:">
+            <img src="create-logo-for-website-jvj (1).png" alt="" class="w-14 h-14 rounded-full text-white">
+                <div class="pe-4 lg:hidden ">           
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white  ">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          </div> 
+        </div>
+        <div class="px-4 lg:hidden ">
+            <i class="fa fa-search text-white"></i>
+        </div>
+        <nav class="space-x-6 space-x-reverse cursor-pointer hidden lg:flex overflow-hidden" id="nav">
+            <ul class="flex space-x-6 space-x-reverse">
+                <li class="nav-item"><a href="#" class="nav-link text-2xl font-semibold text-white hover:border-b-2 hover:border-white   transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110">Sneakers</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-2xl font-semibold text-white hover:border-b-2 hover:border-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110">Boots</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-2xl font-semibold text-white hover:border-b-2 hover:border-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110">Sneaker-Move </a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-2xl font-semibold text-white hover:border-b-2 hover:border-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110">Convers</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-2xl font-semibold text-white hover:border-b-2 hover:border-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110">Offers</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-2xl font-semibold text-white hover:border-b-2 hover:border-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  ">Blogs#</a></li>
+            </ul>
+        </nav>
+        <div class="nav-item flex space-x-4 space-x-reverse ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-link size-6 text-white font-semibold text-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+  </svg>
+  <div class="nav-item  lg:float-left   overflow-hidden"  id="login">
+   <a href="#" class="nav-link  inline-block after:content-[''] transition ease-in-out delay-150 hover:-translate-y-1    text-white lg:float-none font-extrabold text-xl "> Log in</a>
+   <a href="#" class="nav-link inline-block text-white lg:float-none  font-extrabold text-xl">Sign up</a>
+  </div>
+</div>
+    </section>
+    <section>
+        <!-- <div class="text-white text-center container pt-2 px-8   flex justify-center items-center">
+          <h1 class="text-xl left-8 font-mono w-max border-4 border-black rounded-full hover:bg-white hover:text-black hover:border-white hover:font-semibold hover:transition-all hover:delay-500 hover:ring-2 hover:ring-black   py-3 px-3   transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 "> WELLCOME TO JVJ</h1>
+          
+        </div>
+         -->
+    </section>
+    <section class="flex justify-center pb-12 pt-10 items-center text-center ">
+     
+    
+<form data-aos="fade-right" class="form relative">
+  <button class="absolute left-2 -translate-y-1/2 top-1/2 p-1">
+    <svg
+      width="17"
+      height="16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-labelledby="search"
+      class="w-5 h-5 text-black"
+    >
+      <path
+        d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+        stroke="currentColor"
+        stroke-width="1.333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
+  </button>
+  <input
+    class="input rounded-full px-20 py-3 border-2 border-transparent focus:outline-none  placeholder-black transition-all duration-300 shadow-md"
+    placeholder="Search..."
+    required=""
+    type="text"
+  />
+  <button type="reset" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-5 h-5 text-gray-800"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      ></path>
+    </svg>
+  </button>
+</form>
+
+    </section>  
+    <!-- //////////////////////////////////// -->
+    <!-- <section class="hidden lg:flex lg:w-full lg:justify-evenly lg: justify-center lg:items-center lg:text-center lg:pb-14 lg:space-x-7 lg:space-x-reverse lg:flex-row-reverse">
+  
+    </section> -->
+</header>
+
+
+<main>
+    <section class="hidden lg:flex pb-6 pt-5 shadow-md">
+    
+      <div class="mb-20 absolute justify-center lg:w-full  ">
+         <h2 class="text-center  text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 ">  . Top Brand .</h2>
+      </div>
+        <div class="container flex justify-evenly mb-3  mt-9 ">
+            <nav class="flex items-center space-x-28 flex-row justify-evenly mt-6 ">
+                <a href="#"><img class="bg-white w-24 h-15 rounded-full" src="/src/Logo_Slider_Blok_.karhu2jpg.jpg" alt=""></a>
+                <a href="#"><img class="bg-white w-24 h-15 rounded-full" src="/src/Logo_Slider_Blok_newbalance.jpg" alt=""></a>
+                <a href="#"><img class="bg-white w-24 h-15 rounded-full" src="/src/logosliderblok-puma.jpg" alt=""></a>
+                <a href="#"><img class="bg-white w-24 h-15 rounded-full" src="/src/logosliderblokasics.webp" alt=""></a>
+                <a href="#"><img class="bg-white w-24 h-15 rounded-full" src="/src/logosliderblokhi-tec.png" alt=""></a>
+                <a href="#"><img class="bg-white w-24 h-15 rounded-full" src="/src/Crocs_with_whitespace.png" alt=""></a>
+                <a href="#"><img class="bg-white w-24 h-15 rounded-full" src="/src/Nike-black-logo.png" alt=""></a>
+                <a href="#"><img class="bg-white w-24 h-15 rounded-full" src="/src/jordan.png" alt=""></a>
+               
+            </nav>
+
+        
+    </section>
+   <!-- slider -->
+   
+   <section class="mt-5 lg:mt-3  sm:w-full lg:w-full" >
+   
+
+<div id="indicators-carousel" class="relative w-full"  data-carousel="static" data-aos="fade-up"
+     data-aos-duration="3000">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+            <img src="/public/5ccdc6e6-4d7d-4096-b3a8-3607189cdc69.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+         <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+            <img src="/public/240114_Exclusives_2357 2.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+      
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/public/modern-sneakers-shoes-sale-social-media-post-facebook-web-banner-template-premium-psd_641545-77.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/public/psd-black-friday-super-sale-facebook-cover-template_837981-887.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 6 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/public/running-shoes-banner-template_23-2148681438.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 7 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+           <img src="/public/running-shoes-banner-template_23-2148681438.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+       
+       
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 duration-700 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only text-white">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 duration-700 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only text-white" >Next</span>
+        </span>
+    </button>
+</div>
+
+    </section>
+    <section class="w-full">
+        <header class=" container flex flex-col space-y-4  lg:flex-row lg:space-y-0 lg:justify-between mt-5">
+            <div class="w-full">
+            
+ <!-- From Uiverse.io by catraco --> 
+<div class="relative inline-flex items-center group">
+  <button
+    title="Add New"
+    class="cursor-pointer outline-none hover:rotate-90 duration-300"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50px"
+      height="50px"
+      viewBox="0 0 24 24"
+      class="stroke-zinc-400 fill-none group-hover:fill-zinc-800 group-active:stroke-zinc-200 group-active:fill-zinc-600 group-active:duration-0 duration-300"
+    >
+      <path
+        d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+        stroke-width="1.5"
+      ></path>
+      <path d="M8 12H16" stroke-width="1.5"></path>
+      <path d="M12 16V8" stroke-width="1.5"></path>
+    </svg>
+  </button>
+  <span
+    class="absolute w-48 font-semibold left-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 lg:text-xl text-zinc-700 sm:text-sm delay-500"
+  >
+    See the Last Session
+  </span>  
+</div>
+<p class="pi  w-full flex items-center justify-center  font-extrabold text-4xl saturate-150 "  data-aos="fade-up"
+     data-aos-duration="3000"> EXPLORE <span class="text-gray-300    sm:px-0 lg:px-3"  data-aos="fade-up"
+     data-aos-duration="3000">JVJ</span></p>
+   
+
+</button>
+
+
+            </div>
+            <div class="flex items-center space-x-2 space-x-reverse cursor-pointer">
+        
+<button class="cursor-pointer uppercase border-2 border-black rounded-md bg-white px-4 py-1 active:translate-x-0.5 active:translate-y-0.5 hover:shadow-[0.5rem_0.5rem_#F44336,-0.5rem_-0.5rem_#00BCD4] transition">
+ See More
+</button>
+            </div>
+        </header> 
+
+              
+        <div class=" container flex flex-wrap space-y-5 space-y-reverse px-3 mt-10 " > 
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 space-x-10 hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/imgi1logosliderblok-adidasoriginal.webp" alt="" class="w-full h-96  rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class=" font-extrabold text-xl"> Adizero Adios Pro 4</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3  space-x-1">
+                           <i class=" 	fa fa-euro text-3xl "></i>
+                           <p class="mb-1 font-semibold text-2xl">230.07</p>
+                      
+<button
+  class="btn  group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg ">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+                     
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/NIKE+AIR+MAX+PLUS+(PS).avif" alt="" class="w-full h-96    rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class=" font-extrabold text-xl">Nike Zoom Vomero 5 </p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class=" fa fa-euro text-2x  "></i>
+                           <p class="mb-1  font-semibold text-2xl">150.01</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+  id="btn"> 
+  
+  <span class="text-lg ">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+      
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/NIKE+CALM+SLIDE.avif" alt="" class="w-full  h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Nike Calm Slide</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class="fa fa-euro text-2xl "></i>
+                           <p class="mb-1 font-semibold text-2xl">60.33</p>
+                            <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+  id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/saucony-unisex-progrid-omni-9-white-gold-s70907-2.webp" alt="" class="w-full h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class=" font-extrabold text-xl">Progrid Omni 9 </p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class=" fa fa-euro  text-2xl"></i>
+                           <p class="mb-1 font-semibold text-2xl">160.50</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+  id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+          </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/W+NIKE+AIR+MAX+INTRLK+LITE.avif" alt="" class="w-full h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Nike Air Max INTRLK Lite</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class="fa fa-euro text-2xl "></i>
+                           <p class="mb-1 font-semibold text-2xl">99.11</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3 "></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+         </div>
+                </footer>
+            </article>
+       </div>
+  
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/1688b108c5d4a3aa3e390b993601979c.jpeg" alt="" class="w-full h-96    rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class=" font-extrabold text-xl">Black Patent Leather Camo</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class=" fa fa-euro text-2xl"></i>
+                           <p class="mb-1 font-semibold text-2xl">200.30</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+  
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/309868-01-1.webp" alt="" class="w-full h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Puma MB.01 Low </p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class=" fa fa-euro text-2xl"></i>
+                           <p class="mb-1  font-semibold text-2xl">85.9</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+   
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/398846-02-1.webp" alt="" class="w-full h-96    rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Puma Speedcat OG</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                      <i class="fa fa-euro text-2xl "></i>
+                      <p class="mb-1 font-semibold text-2xl">100.41</p>
+                      
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/474721-27-2.webp" alt="" class="w-full h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Salomon XT-4 OG </p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class=" fa fa-euro text-2xl"></i>
+                           <p class="mb-1 font-semibold text-2xl">180.98</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/1309360.jpg" alt="" class="w-full  h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Mizuno Wave Rider</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class="fa fa-euro text-2x "></i>
+                           <p class="mb-1 font-semibold text-2xl">143.69</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/1472608.webp" alt="" class="w-full  h-96  rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Adidas Superstar 82</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class="fa fa-euro text-2xl"></i>
+                           <p class="mb-1 font-semibold text-2xl">110.03</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY<i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/PA1903196B-1_17367750-0972-4fc7-bd07-61ebf3cf016e.webp" alt="" class="w-full  h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Veja Nova HT</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class=" fa fa-euro text-2xl"></i>
+                           <p class="mb-1 font-semibold text-2xl">214.8</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/S70811-3-1.webp" alt="" class="w-full  h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Saucony Shadow 6000</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class=" fa fa-euro text-2xl"></i>
+                           <p class=" mb-1  font-semibold text-2xl">158.9</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+         </div>
+                </footer>
+            </article>
+        </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/NIKE+AIR+MAX+PLUS.avif" alt="" class="w-full h-96   rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Nike Air Max Plus</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class=" fa fa-euro text-2xl"></i>
+                           <p class="mb-1 font-semibold text-2xl">99.99</p>
+                           <button
+  class="btn   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn">
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/nike-wmns-shox-tl-schwarz-27494-1.avif" alt="" class="w-full h-96    rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl" >Nike Shox TL</p>
+               
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           
+                      <i class="fa fa-euro text-2xl"></i>
+                           <p class="mb-1 font-semibold text-2xl">356.5</p>
+                           <button
+  class="   group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+ id="btn"> 
+  <span class="text-lg">BUY <i class="	fa fa-shopping-basket ps-3"></i></span>
+  
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+
+
+                    </div>
+                </footer>
+            </article>
+       </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4  hover:scale-105 hover:duration-300" data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
+            <article class="border border-slate-100 rounded-2xl shadow-2xl m-2">
+                <img src="/public/img/WMNS+NIKE+P-6000.avif" alt="" class="w-full h-96 rounded-xl">
+                <div class="py-1 px-2 space-y-3">
+                <p class="font-extrabold text-xl">Nike P6000</p>
+                </div>
+                <footer class="flex pb-3">
+                    <div class="border-t-2 border-black flex items-center mx-3 space-x-1">
+                           <i class="fa fa-euro text-2xl"></i>
+                           <p class="mb-1 font-semibold text-2xl">201.97</p>
+                           <button
+  class="btn group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-600/50 border border-white/20 left-16 mt-8"
+  id="btn">
+  <span class="text-lg">BUY <i class="fa fa-shopping-basket ps-3"></i></span>
+  <div
+    class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+  >
+    <div class="relative h-full w-10 bg-white/30"></div>
+  </div>
+</button>
+                    </div>
+                </footer>
+            </article>
+       </div>
+       
+ 
+      </div>
+
+        </header> 
+       <div class=" container flex space-x-24 mt-11  " id="divimg">
+         <img src="/public/community.M9WWF6eT.webp"
+         alt=""
+         class="rounded-xl w-20 h-20  font-extrabold  " style="width: 800px; height: 550px;" data-aos="fade-right" />
+         <div class=" space-y-3  " id="img-article"  >
+
+        <div class=" flex  px-5 py-2">
+
+          <span class="words"  id="article">
+          <span class="word">J V J</span>
+          <span class="word">Brands</span>
+          <span class="word">Offers</span>
+ 
+          </span>
+          <h1 class="font-extrabold display-1" id="article" > – Your premium sneaker & streetwear shop</h1>
+
+        </div>
+
+         <h2 class="overflow-x-auto font-semibold  px-5" id="article" >Since its founding in Berlin in 2002, JVJ has stood for a unique combination of streetwear culture, design, and innovation. As one of the leading sneaker shops in Europe, JVJ has made a name for itself with exclusive releases, limited collaborations and rare pieces. This is where passion meets authenticity – from iconic silhouettes to progressive fashion statements. JVJ sees itself not only as a sneaker and streetwear shop, but also as a cultural platform for sneakerheads and fashion enthusiasts who value quality, style, and uniqueness. With stores in Amsterdam, Barcelona, Berlin, Brussels, Munich, Paris, and Vienna, JVJ offers its exclusive collections directly on site, allowing fans to experience the latest sneakers and streetwear pieces up close. Exclusivity, premium brands, and carefully curated collections make JVJ the destination for anyone looking for something special.
+
+Sneakers, streetwear & accessories
+
+In the solebox streetwear shop, you will find a curated selection of top international brands such as Autry, adidas, Asics, New Balance, UGG, Medicom Toy, and Comme des Garçons Play. Whether sneakers, hoodies, T-shirts, sweatshirts or matching accessories – every product stands for style and individuality. Classic and trendy models such as the adidas Handball Spezial, adidas adizero, Asics GEL-NYC, New Balance 9060, and New Balance 530 are particularly popular. With this mix of timeless essentials and limited releases, solebox offers fashion for people who consciously choose their style. Whether you're looking for iconic sneakers or progressive streetwear, solebox is your destination for premium fashion that combines urban character with exclusive appeal.</h2>
+<button id="btn1" class=" "> 
+  Read More
+</button>
+         </div>
+
+       </div>
+    <div class="owl-carousel mt-14 >
+
+   <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/M+NK+CLUB+KNIT+SHORT.avif" alt="" class="w-full h-full object-cover rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/normal (1).jpg" alt="" class="w-full h-full object-cover rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/Gander1_1080x1350_1.webp" alt="" class="w-full h-full object-cover rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/2024_07_24_Oqium_07_145.webp" alt="" class="w-full h-full object-cover rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/Gander2_1080x1350_5_215efe82-8654-4ffd-af2a-3a1d9b56ca10.webp" alt="" class="w-full h-full object-cover rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/M+NK+DF+T90+SL+TOP.avif" alt="" class="w-full h-full  rounded-xl">
+  </article>
+
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/W+NK+DF+INDY+HGH+SPT+BRA.avif" alt="" class="w-full h-full  rounded-xl">
+  </article>
+
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/W+NSW+CLUB+SS+TEE.avif" alt="" class="w-full h-full  rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/M+NK+DF+DNA+8IN+SHORT.avif" alt="" class="w-full h-full  rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/W+NSW+STREET+CARGO+SKIRT.avif" alt="" class="w-full h-full  rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/M+NK+DF+TRAIL+AOP+6_+BF+SHORT.avif" alt="" class="w-full h-full  rounded-xl">
+  </article>
+
+  <article class="border border-slate-100 rounded-2xl shadow-2xl">
+    <img src="/public/owl/W+NSW+LONGLINE+SHORT+SPD.avif" alt="" class="w-full h-full  rounded-xl">
+  </article>
+
+
+</div>
+
+       
+        </div>
+</main>
+
+
+<footer id="foot" class=" container border-t-2 border-gray-500 sm:w-full md:w-full lg:w-full xl:w-full "> 
+  <div class=" flex space-x-5 mt-3 justify-center items-center " >
+    <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pi-american_express" viewBox="0 0 38 24" width="38" height="24"><title id="pi-american_express">American Express</title><path fill="#000" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3Z" opacity=".07"></path><path fill="#006FCF" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32Z"></path><path fill="#FFF" d="M22.012 19.936v-8.421L37 11.528v2.326l-1.732 1.852L37 17.573v2.375h-2.766l-1.47-1.622-1.46 1.628-9.292-.02Z"></path><path fill="#006FCF" d="M23.013 19.012v-6.57h5.572v1.513h-3.768v1.028h3.678v1.488h-3.678v1.01h3.768v1.531h-5.572Z"></path><path fill="#006FCF" d="m28.557 19.012 3.083-3.289-3.083-3.282h2.386l1.884 2.083 1.89-2.082H37v.051l-3.017 3.23L37 18.92v.093h-2.307l-1.917-2.103-1.898 2.104h-2.321Z"></path><path fill="#FFF" d="M22.71 4.04h3.614l1.269 2.881V4.04h4.46l.77 2.159.771-2.159H37v8.421H19l3.71-8.421Z"></path><path fill="#006FCF" d="m23.395 4.955-2.916 6.566h2l.55-1.315h2.98l.55 1.315h2.05l-2.904-6.566h-2.31Zm.25 3.777.875-2.09.873 2.09h-1.748Z"></path><path fill="#006FCF" d="M28.581 11.52V4.953l2.811.01L32.84 9l1.456-4.046H37v6.565l-1.74.016v-4.51l-1.644 4.494h-1.59L30.35 7.01v4.51h-1.768Z"></path></svg>
+
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" role="img" x="0" y="0" width="38" height="24" viewBox="0 0 165.521 105.965" xml:space="preserve" aria-labelledby="pi-apple_pay"><title id="pi-apple_pay">Apple Pay</title><path fill="#000" d="M150.698 0H14.823c-.566 0-1.133 0-1.698.003-.477.004-.953.009-1.43.022-1.039.028-2.087.09-3.113.274a10.51 10.51 0 0 0-2.958.975 9.932 9.932 0 0 0-4.35 4.35 10.463 10.463 0 0 0-.975 2.96C.113 9.611.052 10.658.024 11.696a70.22 70.22 0 0 0-.022 1.43C0 13.69 0 14.256 0 14.823v76.318c0 .567 0 1.132.002 1.699.003.476.009.953.022 1.43.028 1.036.09 2.084.275 3.11a10.46 10.46 0 0 0 .974 2.96 9.897 9.897 0 0 0 1.83 2.52 9.874 9.874 0 0 0 2.52 1.83c.947.483 1.917.79 2.96.977 1.025.183 2.073.245 3.112.273.477.011.953.017 1.43.02.565.004 1.132.004 1.698.004h135.875c.565 0 1.132 0 1.697-.004.476-.002.952-.009 1.431-.02 1.037-.028 2.085-.09 3.113-.273a10.478 10.478 0 0 0 2.958-.977 9.955 9.955 0 0 0 4.35-4.35c.483-.947.789-1.917.974-2.96.186-1.026.246-2.074.274-3.11.013-.477.02-.954.022-1.43.004-.567.004-1.132.004-1.699V14.824c0-.567 0-1.133-.004-1.699a63.067 63.067 0 0 0-.022-1.429c-.028-1.038-.088-2.085-.274-3.112a10.4 10.4 0 0 0-.974-2.96 9.94 9.94 0 0 0-4.35-4.35A10.52 10.52 0 0 0 156.939.3c-1.028-.185-2.076-.246-3.113-.274a71.417 71.417 0 0 0-1.431-.022C151.83 0 151.263 0 150.698 0z"></path><path fill="#FFF" d="M150.698 3.532l1.672.003c.452.003.905.008 1.36.02.793.022 1.719.065 2.583.22.75.135 1.38.34 1.984.648a6.392 6.392 0 0 1 2.804 2.807c.306.6.51 1.226.645 1.983.154.854.197 1.783.218 2.58.013.45.019.9.02 1.36.005.557.005 1.113.005 1.671v76.318c0 .558 0 1.114-.004 1.682-.002.45-.008.9-.02 1.35-.022.796-.065 1.725-.221 2.589a6.855 6.855 0 0 1-.645 1.975 6.397 6.397 0 0 1-2.808 2.807c-.6.306-1.228.511-1.971.645-.881.157-1.847.2-2.574.22-.457.01-.912.017-1.379.019-.555.004-1.113.004-1.669.004H14.801c-.55 0-1.1 0-1.66-.004a74.993 74.993 0 0 1-1.35-.018c-.744-.02-1.71-.064-2.584-.22a6.938 6.938 0 0 1-1.986-.65 6.337 6.337 0 0 1-1.622-1.18 6.355 6.355 0 0 1-1.178-1.623 6.935 6.935 0 0 1-.646-1.985c-.156-.863-.2-1.788-.22-2.578a66.088 66.088 0 0 1-.02-1.355l-.003-1.327V14.474l.002-1.325a66.7 66.7 0 0 1 .02-1.357c.022-.792.065-1.717.222-2.587a6.924 6.924 0 0 1 .646-1.981c.304-.598.7-1.144 1.18-1.623a6.386 6.386 0 0 1 1.624-1.18 6.96 6.96 0 0 1 1.98-.646c.865-.155 1.792-.198 2.586-.22.452-.012.905-.017 1.354-.02l1.677-.003h135.875"></path><g><g><path fill="#000" d="M43.508 35.77c1.404-1.755 2.356-4.112 2.105-6.52-2.054.102-4.56 1.355-6.012 3.112-1.303 1.504-2.456 3.959-2.156 6.266 2.306.2 4.61-1.152 6.063-2.858"></path><path fill="#000" d="M45.587 39.079c-3.35-.2-6.196 1.9-7.795 1.9-1.6 0-4.049-1.8-6.698-1.751-3.447.05-6.645 2-8.395 5.1-3.598 6.2-.95 15.4 2.55 20.45 1.699 2.5 3.747 5.25 6.445 5.151 2.55-.1 3.549-1.65 6.647-1.65 3.097 0 3.997 1.65 6.696 1.6 2.798-.05 4.548-2.5 6.247-5 1.95-2.85 2.747-5.6 2.797-5.75-.05-.05-5.396-2.101-5.446-8.251-.05-5.15 4.198-7.6 4.398-7.751-2.399-3.548-6.147-3.948-7.447-4.048"></path></g><g><path fill="#000" d="M78.973 32.11c7.278 0 12.347 5.017 12.347 12.321 0 7.33-5.173 12.373-12.529 12.373h-8.058V69.62h-5.822V32.11h14.062zm-8.24 19.807h6.68c5.07 0 7.954-2.729 7.954-7.46 0-4.73-2.885-7.434-7.928-7.434h-6.706v14.894z"></path><path fill="#000" d="M92.764 61.847c0-4.809 3.665-7.564 10.423-7.98l7.252-.442v-2.08c0-3.04-2.001-4.704-5.562-4.704-2.938 0-5.07 1.507-5.51 3.82h-5.252c.157-4.86 4.731-8.395 10.918-8.395 6.654 0 10.995 3.483 10.995 8.89v18.663h-5.38v-4.497h-.13c-1.534 2.937-4.914 4.782-8.579 4.782-5.406 0-9.175-3.222-9.175-8.057zm17.675-2.417v-2.106l-6.472.416c-3.64.234-5.536 1.585-5.536 3.95 0 2.288 1.975 3.77 5.068 3.77 3.95 0 6.94-2.522 6.94-6.03z"></path><path fill="#000" d="M120.975 79.652v-4.496c.364.051 1.247.103 1.715.103 2.573 0 4.029-1.09 4.913-3.899l.52-1.663-9.852-27.293h6.082l6.863 22.146h.13l6.862-22.146h5.927l-10.216 28.67c-2.34 6.577-5.017 8.735-10.683 8.735-.442 0-1.872-.052-2.261-.157z"></path></g></g></svg>
+
+    <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" width="38" height="24" aria-labelledby="pi-master"><title id="pi-master">Mastercard</title><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"></path><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path><circle fill="#EB001B" cx="15" cy="12" r="7"></circle><circle fill="#F79E1B" cx="23" cy="12" r="7"></circle><path fill="#FF5F00" d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"></path></svg>
+
+
+    <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" width="38" height="24" aria-labelledby="pi-visa"><title id="pi-visa">Visa</title><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"></path><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path><path d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z" fill="#142688"></path></svg>
+    
+    <svg id="KBCLogo" class="w-8" viewBox="0 0 25.66 20" role="img" aria-labelledby="KBCLogo-title"><defs></defs><title id="KBCLogo-title">KBC</title><path class="cls-1" d="M13,8.85A4.43,4.43,0,1,0,8.55,4.42,4.43,4.43,0,0,0,13,8.85Z"></path><path class="cls-1" d="M16.25,8a5.83,5.83,0,0,1-7.81.61C3.6,9.13,0,9.85,0,9.85v2H25.66v-4s-4.39,0-9.41.24Z"></path><polygon class="cls-2" points="3.05 17.54 3.05 19.92 0 19.92 0 13.57 3.05 13.57 3.05 16.43 3.07 16.43 4.86 13.57 8.52 13.57 5.84 16.85 8.37 19.92 4.88 19.92 3.07 17.54 3.05 17.54 3.05 17.54"></polygon><path class="cls-2" d="M25.66,19.66a9.06,9.06,0,0,1-2.51.35c-3,0-5.23-.86-5.23-3.35,0-2.26,2.15-3.23,5.08-3.23a9.66,9.66,0,0,1,2.66.34V16a3.65,3.65,0,0,0-2.06-.59c-1.12,0-2.23.55-2.23,1.35s1.11,1.35,2.23,1.35a3.93,3.93,0,0,0,2.06-.58v2.17Z"></path><path class="cls-2" d="M12.06,16.26h1.52c.59,0,.82-.23.82-.6s-.23-.63-.77-.63H12.06v1.23Zm0,2.37h1.59c.6,0,.8-.25.8-.61s-.2-.63-.79-.63h-1.6v1.24ZM9,13.57h6.16c1.6,0,2.12.62,2.12,1.59s-1,1.56-2,1.61v0c1,.08,2,.2,2,1.48,0,.83-.53,1.65-2.29,1.65H9V13.57Z"></path></svg>
+
+    <svg id="IdealLogo" class="w-8" viewBox="0 0 604.4 526.98" role="img" aria-labelledby="IdealLogo-title"><defs></defs><title id="IdealLogo-title">Ideal</title><g id="Layer_2" data-name="Layer 2"><rect class="cls-1" x="67.18" y="296.62" width="96.85" height="160.82"></rect><path class="cls-1" d="M171.35,216.22a54.83,54.83,0,1,1-54.83-54.82A54.84,54.84,0,0,1,171.35,216.22Z"></path><path class="cls-1" d="M347.48,0H0V527H347.48v-.1c75.91-1,136-19.89,178.71-56.2,51.89-44.15,78.21-113.86,78.21-207.19,0-44.62-6.92-84.63-20.57-118.94-13.06-32.82-32.36-60.73-57.36-83-44-39.12-105.83-60.28-179-61.48Zm-6.57,35c67.34,0,123.47,18.25,162.31,52.77,43.91,39,66.18,98.14,66.18,175.72C569.4,417.24,494.66,492,340.91,492H35V35Z"></path></g><g id="Layer_3" data-name="Layer 3"><path class="cls-2" d="M419.91,228.39l-9-24.14-8.8,24.14Z"></path><path class="cls-2" d="M230.16,248.35a14.79,14.79,0,0,0,6.4-3.23c1.63-1.47,3-4.06,4.13-7.68,1.17-3.84,1.76-9.21,1.76-16s-.59-11.95-1.75-15.45a18.47,18.47,0,0,0-4.59-7.81,15.24,15.24,0,0,0-7.39-3.67c-1.65-.37-5.53-.82-14.64-.82H208.5v55.44h11.08A49.54,49.54,0,0,0,230.16,248.35Z"></path><path class="cls-2" d="M470.43,269.64V174h23.43v75.19h43.41C528.4,114.61,424.38,77.61,326.39,77.61H208.5V173.2h12.56c7.91,0,13.83.61,18.1,1.85a33.16,33.16,0,0,1,14.88,9.1,42.53,42.53,0,0,1,9.28,15.73c2.08,6.07,3.13,13.62,3.13,22.42a63,63,0,0,1-2.94,20.27A43,43,0,0,1,253.1,259.7a35,35,0,0,1-14,7.89c-4.3,1.36-10,2.05-17.09,2.05H208.5v188H326.39c102.12,0,210.78-30.67,211.49-188Zm-113.68,0H282.31V173.2H355v20.5H305.75V209h45.81v20.5H305.75v19.69h51Zm78.95,0-8-20.75H394.66l-7.57,20.75h-25l37.47-96.44h23.06l38.56,96.44Z"></path></g></svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" aria-labelledby="pi-shopify_pay"><title id="pi-shopify_pay">Shop Pay</title><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z" fill="#000"></path><path d="M35.889 0C37.05 0 38 .982 38 2.182v19.636c0 1.2-.95 2.182-2.111 2.182H2.11C.95 24 0 23.018 0 21.818V2.182C0 .982.95 0 2.111 0H35.89z" fill="#5A31F4"></path><path d="M9.35 11.368c-1.017-.223-1.47-.31-1.47-.705 0-.372.306-.558.92-.558.54 0 .934.238 1.225.704a.079.079 0 00.104.03l1.146-.584a.082.082 0 00.032-.114c-.475-.831-1.353-1.286-2.51-1.286-1.52 0-2.464.755-2.464 1.956 0 1.275 1.15 1.597 2.17 1.82 1.02.222 1.474.31 1.474.705 0 .396-.332.582-.993.582-.612 0-1.065-.282-1.34-.83a.08.08 0 00-.107-.035l-1.143.57a.083.083 0 00-.036.111c.454.92 1.384 1.437 2.627 1.437 1.583 0 2.539-.742 2.539-1.98s-1.155-1.598-2.173-1.82v-.003zM15.49 8.855c-.65 0-1.224.232-1.636.646a.04.04 0 01-.069-.03v-2.64a.08.08 0 00-.08-.081H12.27a.08.08 0 00-.08.082v8.194a.08.08 0 00.08.082h1.433a.08.08 0 00.081-.082v-3.594c0-.695.528-1.227 1.239-1.227.71 0 1.226.521 1.226 1.227v3.594a.08.08 0 00.081.082h1.433a.08.08 0 00.081-.082v-3.594c0-1.51-.981-2.577-2.355-2.577zM20.753 8.62c-.778 0-1.507.24-2.03.588a.082.082 0 00-.027.109l.632 1.088a.08.08 0 00.11.03 2.5 2.5 0 011.318-.366c1.25 0 2.17.891 2.17 2.068 0 1.003-.736 1.745-1.669 1.745-.76 0-1.288-.446-1.288-1.077 0-.361.152-.657.548-.866a.08.08 0 00.032-.113l-.596-1.018a.08.08 0 00-.098-.035c-.799.299-1.359 1.018-1.359 1.984 0 1.46 1.152 2.55 2.76 2.55 1.877 0 3.227-1.313 3.227-3.195 0-2.018-1.57-3.492-3.73-3.492zM28.675 8.843c-.724 0-1.373.27-1.845.746-.026.027-.069.007-.069-.029v-.572a.08.08 0 00-.08-.082h-1.397a.08.08 0 00-.08.082v8.182a.08.08 0 00.08.081h1.433a.08.08 0 00.081-.081v-2.683c0-.036.043-.054.069-.03a2.6 2.6 0 001.808.7c1.682 0 2.993-1.373 2.993-3.157s-1.313-3.157-2.993-3.157zm-.271 4.929c-.956 0-1.681-.768-1.681-1.783s.723-1.783 1.681-1.783c.958 0 1.68.755 1.68 1.783 0 1.027-.713 1.783-1.681 1.783h.001z" fill="#fff"></path></svg>
+
+    <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" width="38" height="24" role="img" aria-labelledby="pi-paypal"><title id="pi-paypal">PayPal</title><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"></path><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path><path fill="#003087" d="M23.9 8.3c.2-1 0-1.7-.6-2.3-.6-.7-1.7-1-3.1-1h-4.1c-.3 0-.5.2-.6.5L14 15.6c0 .2.1.4.3.4H17l.4-3.4 1.8-2.2 4.7-2.1z"></path><path fill="#3086C8" d="M23.9 8.3l-.2.2c-.5 2.8-2.2 3.8-4.6 3.8H18c-.3 0-.5.2-.6.5l-.6 3.9-.2 1c0 .2.1.4.3.4H19c.3 0 .5-.2.5-.4v-.1l.4-2.4v-.1c0-.2.3-.4.5-.4h.3c2.1 0 3.7-.8 4.1-3.2.2-1 .1-1.8-.4-2.4-.1-.5-.3-.7-.5-.8z"></path><path fill="#012169" d="M23.3 8.1c-.1-.1-.2-.1-.3-.1-.1 0-.2 0-.3-.1-.3-.1-.7-.1-1.1-.1h-3c-.1 0-.2 0-.2.1-.2.1-.3.2-.3.4l-.7 4.4v.1c0-.3.3-.5.6-.5h1.3c2.5 0 4.1-1 4.6-3.8v-.2c-.1-.1-.3-.2-.5-.2h-.1z"></path></svg>
+  </div>
+  <div class=" flex  container w-full  space-x-24 mt-24 mb-8">
+     <div class="flex flex-col space-y-3">
+      <h2 class="text-2xl mb-5">About us</h2>
+      <a href="#">Social Code of Conduct</a>
+      <a href="#">Career</a>
+      <a href="#">Accessibility Statement</a>
+      <a href="#">Impact</a>
+    </div>
+     <div class="flex flex-col space-y-3 ">
+      <h2 class="text-2xl mb-5">Service</h2>
+      <a href="#">Contact us</a>
+      <a href="#">FAQ</a>
+      <a href="#">Help</a>
+      <a href="#">shippng</a>
+      <a href="#">Returns and exchanges</a>
+      <a href="#">Payments</a>
+    </div>
+     <div class="flex flex-col space-y-3">
+      <h2 class="text-2xl mb-5">Follow us</h2>
+      <a href="#" class="underline">facebook <i class="	fa fa-external-link-square"></i></a>
+      <a href="#" class="underline">instagram <i class="	fa fa-external-link-square"></i></a>
+      <a href="#" class="underline">twitter <i class="	fa fa-external-link-square"></i></a>
+      <a href="#" class="underline">YouTube <i class="	fa fa-external-link-square"></i></a>
+      <a href="#" class="underline">Blog <i class="	fa fa-external-link-square"></i></a>
+      
+    </div>
+
+    <div class="flex space-x-4  mt-52 ">
+      <p class="text-gray-600">© 2025 JVJ</p>
+      <p class="text-gray-600">Terms & condition</p>
+      <p class="text-gray-600">Privacy</p>
+    </div>
+  </div>
+</footer>
+
+<svg
+  id="spinner"
+  class="container"
+  viewBox="0 0 40 40"
+  height="40"
+  width="40"
+  style="display:none;position:fixed;inset:0;margin:auto;z-index:9998"
+>
+  <circle 
+    class="track"
+    cx="20" 
+    cy="20" 
+    r="17.5" 
+    pathlength="100" 
+    stroke-width="5px" 
+    fill="none" 
+  />
+  <circle 
+    class="car"
+    cx="20" 
+    cy="20" 
+    r="17.5" 
+    pathlength="100" 
+    stroke-width="5px" 
+    fill="none" 
+  />
+</svg>
+ <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+  <script src="/src/jquery-3.7.1.min.js"></script>
+  <script src="sina.js"></script>
+  <script src="/src/OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js">  </script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/grid.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
+     <!-- Lenis  -->
+    <script defer>
+  const lenis = new Lenis({
+      duration: 1.2,       
+        easing: (t) => t, 
+      smooth: true,
+  })
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+
+    </script>
+
+    <!-- AOS Animation -->
+  <script defer>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+<!-- Gsap Timeline -->
+    <script defer>
+  let tl=gsap.timeline();
+     tl.from(".nav-item",{
+       y:-120,
+       opacity:0,
+       duration:0.6,
+       stagger:0.15,
+       ease:"power2.out"
+     })
+     tl.from(".login-link",{
+       xPercent:-100,
+       opacity:0,
+       duration:0.6,
+       stagger:0.15,
+       ease:"power2.out"
+     })
+     gsap.to('.pi',{
+      y:+30,
+      y:-5,
+      duration:1,
+       ease:"power2.out",
+       yoyo:true,
+    
+     })
+
+   
+</script>
+<!-- Owl cerousel -->
+ <script defer>
+    $(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    loop:true,
+    ltr:true,
+    margin:6,
+    responsiveclass:true,  
+     autoplay:true,
+     autoplayTimeout: 1500,         
+   autoplayHoverPause: true,   
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+
+    }
+
+  });
+});
+
+
+ </script>
+
+<div id="toast" style="display:none;position:fixed;bottom:30px;right:30px;background:#333;color:#fff;padding:16px 24px;border-radius:8px;z-index:9999;font-size:1.2rem;box-shadow:0 2px 8px #0003 ;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ border: 5px solid rgb(49, 213, 49);"> add to cart succesful !</div>
+  <!-- Toast  Rate   Spinner -->
+<script defer>
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.innerText = message;
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2500);
+  }
+  const spinner=document.getElementById('spinner');
+  document.querySelectorAll("button#btn").forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      if(navigator.onLine){
+      if(spinner)  spinner.style.display= 'block';
+      setTimeout(() => {
+        if(spinner) spinner.style.display='none';
+        showToast("add to cart succesful"); 
+      }, 3000);
+   console.log("you are online")
+    }else{
+           if(spinner)  spinner.style.display= 'block';
+      setTimeout(() => {
+        if(spinner) spinner.style.display='none';
+  
+        alert("Checking the network")
+      }, 8000);
+         console.log("you are offline")
+    }
+    })
+  })
+ 
+  //  accessbility  microphone / camera 
+  // navigator.mediaDevices.getUserMedia({video:true, audio:true}).then((strem)=>{
+  //   document.querySelector("video").srcObject=strem;
+  // }).catch((err)=>{
+  //   console.error("acess derfind", err)
+  // })
+
+  // accessbility to location users//
+  navigator.geolocation.getCurrentPosition((pos)=>{
+    console.log("latitude",pos.coords.latitude);
+    console.log("longitude",pos.coords.longitude);
+  },
+  (err)=>{
+ console.log("error", err.message);
+  }
+)
+
+  // navigator share
+ if(navigator.share){
+  navigator.share({
+    title:"share",
+    text:"test sharing",
+    url:'https:/sabezlearn.com'
+  }).then(()=>{
+    console.log("shared succesfully")
+  }).catch((err)=>{
+    console.error("share failed")
+  })
+ }
+
+ 
+function createRating(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            stars += '<i class="fa fa-star"></i>';
+        } else if (i - 0.5 <= rating) {
+            stars += '<i class="fa fa-star-half-o"></i>';
+        } else {
+            stars += '<i class="fa fa-star-o"></i>';
+        }
+    }
+    return stars;
+
+
+}
+
+
+function getRandomRating() {
+    return Math.round((Math.random() * 1.5 + 3.5) * 10) / 10;
+}
+
+
+function addRatingsToAllProducts() {
+    const products = document.querySelectorAll('article');
+    
+    products.forEach(product => {
+        const titleElement = product.querySelector('p.font-extrabold.text-xl');
+        if (titleElement) {
+         
+            const existingRating = product.querySelector('.rating-stars');
+            if (!existingRating) {
+                
+                const ratingDiv = document.createElement('div');
+                ratingDiv.className = 'flex text-yellow-400 rating-stars';
+                ratingDiv.setAttribute('data-rating', getRandomRating());
+                
+          
+                titleElement.parentNode.insertBefore(ratingDiv, titleElement.nextSibling);
+            }
+        }
+    });
+    
+
+    const ratingElements = document.querySelectorAll('.rating-stars');
+    ratingElements.forEach(element => {
+        const rating = parseFloat(element.getAttribute('data-rating'));
+        element.innerHTML = createRating(rating);
+    });
+}
+
+
+let ratingElement = document.querySelector("#rate");
+if (ratingElement) {
+    ratingElement.innerHTML = createRating(4.5);
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    addRatingsToAllProducts();
+});
+
+</script>
+
+</body>
+</html> 

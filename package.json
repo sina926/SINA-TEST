@@ -1,0 +1,20 @@
+{
+  "name": "sina.project-2",
+  "version": "1.0.0",
+  "main": "jquery-3.7.1.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sina926/SINA-TEST.git"
+  },
+  "keywords": [],
+  "author": "sina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sina926/SINA-TEST/issues"
+  },
+  "homepage": "https://github.com/sina926/SINA-TEST#readme",
+  "description": ""
+}
